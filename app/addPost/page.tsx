@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { toast } from "react-hot-toast"
 
 const AddPost = () => {
   const [title, setTitle] = useState("")
@@ -22,6 +23,7 @@ const AddPost = () => {
 
       if (res.ok) {
         router.push("/")
+        toast.success("Post added successfully!")
       } else {
         throw new Error("Failde to add post!")
       }

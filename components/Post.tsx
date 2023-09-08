@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { toast } from "react-hot-toast"
 
 type props = {
   title: string
@@ -17,6 +18,7 @@ const Post = ({ title, description, _id }: props) => {
     })
     if (res.ok) {
       router.refresh()
+      toast.error("Your post has been deleted!")
     }
   }
 

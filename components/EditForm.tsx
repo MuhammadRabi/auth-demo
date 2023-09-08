@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { toast } from "react-hot-toast"
 
 type props = {
   id: string
@@ -27,6 +28,7 @@ const EditForm = ({ id, title, description }: props) => {
       }
       router.push("/")
       router.refresh()
+      toast.success("Post updated successfully!")
     } catch (error) {
       console.log(error)
     }

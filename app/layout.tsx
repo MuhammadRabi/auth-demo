@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast"
 import Navbar from "@/components/Navbar"
 import "./globals.css"
 import type { Metadata } from "next"
@@ -22,6 +23,7 @@ export default function RootLayout({
           <Navbar />
           {children}
         </main>
+        <Toaster />
       </body>
     </html>
   )
