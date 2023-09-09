@@ -9,7 +9,6 @@ export async function POST(request: Request) {
   return NextResponse.json({ message: "post added!" }, { status: 201 })
 }
 
-// need deugging
 export async function GET() {
   await connectMongoDB()
   const posts = await Post.find()

@@ -12,6 +12,11 @@ const AddPost = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
+    if (!title || !description) {
+      toast.error("Title and description are required.")
+      return
+    }
+
     try {
       const res = await fetch("http://localhost:3000/api/posts", {
         method: "POST",
@@ -22,6 +27,7 @@ const AddPost = () => {
       })
 
       if (res.ok) {
+        router.refresh()
         router.push("/")
         toast.success("Post added successfully!")
       } else {
