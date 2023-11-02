@@ -27,7 +27,6 @@ const AddPost = () => {
       })
 
       if (res.ok) {
-        router.refresh()
         router.push("/")
         toast.success("Post added successfully!")
       } else {

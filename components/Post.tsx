@@ -23,7 +23,7 @@ const Post = ({ title, description, _id }: props) => {
   }
 
   return (
-    <article className="border border-gray-200 shadow-lg p-5 flex rounded-sm items-center justify-between space-x-6 mb-4 w-3/4 max-w-2xl">
+    <article className="border-2 border-gray-200 shadow-lg p-5 flex rounded-sm items-center justify-between space-x-6 mb-4 w-3/4 max-w-2xl border-l-orange-500">
       <div className="details">
         <h2 className="text-2xl capitalize font-bold mb-2">{title}</h2>
         <p className="text-sm">{description}</p>
