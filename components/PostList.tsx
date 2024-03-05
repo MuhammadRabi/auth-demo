@@ -1,8 +1,9 @@
+import { baseUrl } from "@/constants/constants"
 import Post from "./Post"
 
 const getAllPosts = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/posts", {
+    const res = await fetch(`${baseUrl}/api/posts`, {
       cache: "no-store",
     })
 

@@ -1,9 +1,10 @@
 import EditForm from "@/components/EditForm"
+import { baseUrl } from "@/constants/constants"
 
 // get specific post from db
 const getPostById = async (id: string) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/posts/${id}`)
+    const res = await fetch(`${baseUrl}/api/posts/${id}`)
     if (!res.ok) {
       throw new Error("failed fetch post from db!")
     }
