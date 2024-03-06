@@ -4,13 +4,13 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { toast } from "react-hot-toast"
 
-type props = {
+type typeProps = {
   id: string
-  title: string
-  description: string
+  title?: string
+  description?: string
 }
 
-const EditForm = ({ id, title, description }: props) => {
+const EditForm = ({ id, title, description }: typeProps) => {
   const [newTitle, setNewtitle] = useState(title)
   const [newDescription, setNewdescription] = useState(description)
   const router = useRouter()
@@ -18,7 +18,7 @@ const EditForm = ({ id, title, description }: props) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
-      const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+      const res = await fetch(`/api/posts/${id}`, {
         method: "PUT",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ newTitle, newDescription }),
@@ -41,7 +41,7 @@ const EditForm = ({ id, title, description }: props) => {
           <input
             type="text"
             value={newTitle}
-            placeholder="title"
+            placeholder={title}
             onChange={(e) => setNewtitle(e.target.value)}
             className="bg-slate-100 p-3"
           />
@@ -50,7 +50,7 @@ const EditForm = ({ id, title, description }: props) => {
           <input
             type="text"
             value={newDescription}
-            placeholder="description"
+            placeholder={description}
             onChange={(e) => setNewdescription(e.target.value)}
             className="bg-slate-100 p-3"
           />

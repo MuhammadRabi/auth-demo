@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { toast } from "react-hot-toast"
-import { baseUrl } from "@/constants/constants"
 
 const AddPost = () => {
   const [title, setTitle] = useState("")
@@ -19,7 +18,7 @@ const AddPost = () => {
     }
 
     try {
-      const res = await fetch(`${baseUrl}/api/posts`, {
+      const res = await fetch("/api/posts", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

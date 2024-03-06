@@ -9,11 +9,15 @@ export async function POST(request: Request) {
   return NextResponse.json({ message: "post added!" }, { status: 201 })
 }
 
+// get all posts route
+
 export async function GET() {
   await connectMongoDB()
   const posts = await Post.find()
   return NextResponse.json({ posts })
 }
+
+// delete post route
 
 export async function DELETE(request: NextRequest) {
   const id = request.nextUrl.searchParams.get("id")

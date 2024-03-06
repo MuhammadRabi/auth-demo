@@ -1,21 +1,28 @@
+"use client"
 import EditForm from "@/components/EditForm"
-import { baseUrl } from "@/constants/constants"
+import { postType } from "@/types"
+import { useEffect, useState } from "react"
 
-// get specific post from db
-const getPostById = async (id: string) => {
-  try {
-    const res = await fetch(`${baseUrl}/api/posts/${id}`)
-    if (!res.ok) {
-      throw new Error("failed fetch post from db!")
-    }
-    return res.json()
-  } catch (error) {
-    console.log(error)
-  }
-}
-export default async function EditPost({ params }: { params: { id: string } }) {
+export default function EditPost({ params }: { params: { id: string } }) {
   const { id } = params
-  const { post } = await getPostById(id)
+  const [editedPost, setEditedPost] = useState<postType | null>(null)
 
-  return <EditForm id={id} {...post} />
+  const getPostById = async () => {
+    try {
+      const res = await fetch(`/api/posts/${id}`)
+      if (!res.ok) {
+        throw new Error("failed fetch post from db!")
+      }
+      const { post } = await res.json()
+      if (post) {
+        setEditedPost(post)
+      }
+    } catch (error) {
+      throw new Error("there is an error!")
+    }
+  }
+  useEffect(() => {
+    getPostById()
+  }, [])
+  return editedPost && <EditForm id={id} {...editedPost} />
 }

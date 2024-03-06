@@ -1,28 +1,31 @@
-import { baseUrl } from "@/constants/constants"
+"use client"
+import { useEffect, useState } from "react"
 import Post from "./Post"
+import { postType } from "@/types"
 
-const getAllPosts = async () => {
-  try {
-    const res = await fetch(`${baseUrl}/api/posts`, {
-      cache: "no-store",
-    })
+const PostList = () => {
+  const [posts, setPosts] = useState<postType[]>([])
 
-    if (!res.ok) {
-      throw new Error("failed to fetch posts!")
+  const getAllPosts = async () => {
+    try {
+      const res = await fetch("/api/posts")
+      if (!res.ok) {
+        throw new Error("failed fetch post from db!")
+      }
+      const { posts } = await res.json()
+      setPosts(posts)
+    } catch (error) {
+      console.log(error)
     }
-
-    return res.json()
-  } catch (error) {
-    console.log("Error loading posts: ", error)
   }
-}
+  useEffect(() => {
+    getAllPosts()
+  }, [])
 
-const PostList = async () => {
-  const { posts } = await getAllPosts()
   return (
     <>
       {posts.map((post: any) => {
-        return <Post key={post._id} {...post} />
+        return <Post key={post?._id} {...post} />
       })}
     </>
   )

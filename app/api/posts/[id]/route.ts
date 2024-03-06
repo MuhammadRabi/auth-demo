@@ -2,6 +2,8 @@ import connectMongoDB from "@/lib/mongodb"
 import Post from "@/models/post"
 import { NextRequest, NextResponse } from "next/server"
 
+// edit post by id
+
 export async function PUT(
   request: Request,
   { params }: { params: { id: string } }
@@ -12,6 +14,8 @@ export async function PUT(
   await Post.findByIdAndUpdate(id, { title, description })
   return NextResponse.json({ message: "post updated!" }, { status: 200 })
 }
+
+// get post by ID
 
 export async function GET(
   request: NextRequest,
