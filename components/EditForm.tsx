@@ -28,7 +28,7 @@ const EditForm = ({ id, title, description }: typeProps) => {
       }
       router.push("/")
       router.refresh()
-      toast.success("Post updated successfully!")
+      toast.success(`${newTitle} was updated successfully!`)
     } catch (error) {
       console.log(error)
     }

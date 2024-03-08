@@ -13,7 +13,7 @@ const Post = ({ title, description, _id }: postType) => {
       cache: "no-store",
     })
     if (res.ok) {
-      router.push("/")
+      router.refresh()
       toast.error("Your post has been deleted!")
     }
   }

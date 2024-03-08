@@ -2,11 +2,9 @@
 import EditForm from "@/components/EditForm"
 import { postType } from "@/types"
 import { useEffect, useState } from "react"
-
 export default function EditPost({ params }: { params: { id: string } }) {
   const { id } = params
   const [editedPost, setEditedPost] = useState<postType | null>(null)
-
   const getPostById = async () => {
     try {
       const res = await fetch(`/api/posts/${id}`)
@@ -24,5 +22,5 @@ export default function EditPost({ params }: { params: { id: string } }) {
   useEffect(() => {
     getPostById()
   }, [])
-  return editedPost && <EditForm id={id} {...editedPost} />
+  return <section>{editedPost && <EditForm id={id} {...editedPost} />}</section>
 }
