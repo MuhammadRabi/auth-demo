@@ -8,7 +8,7 @@ const PostList = () => {
 
   const getAllPosts = async () => {
     try {
-      const res = await fetch("/api/posts", { cache: "no-store" })
+      const res = await fetch("/api/posts")
       if (!res.ok) {
         throw new Error("failed fetch post from db!")
       }
