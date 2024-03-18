@@ -1,8 +1,9 @@
 import Link from "next/link"
+import ThemeChanger from "./ThemeChanger"
 
 const Navbar = () => {
   return (
-    <nav className="bg-slate-700 md:mx-24 mt-4 px-4 md:px-12 py-4 flex justify-between items-center text-white">
+    <nav className="bg-black dark:bg-slate-700 md:px-36 px-8 py-4 flex justify-between items-center text-white">
       <Link href="/">
         <div className="logo text-2xl font-bold">Rabi</div>
       </Link>
@@ -12,6 +13,7 @@ const Navbar = () => {
       >
         Create post
       </Link>
+      <ThemeChanger />
     </nav>
   )
 }

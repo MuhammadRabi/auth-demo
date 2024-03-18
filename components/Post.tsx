@@ -19,8 +19,8 @@ const Post = ({ title, description, _id }: postType) => {
   }
 
   return (
-    <article className="border-2 border-gray-200 shadow-lg p-5 flex rounded-sm items-center justify-between space-x-6 mb-4 w-full md:w-3/4 max-w-2xl border-l-orange-500">
-      <div className="details">
+    <article className="border-2 border-gray-100 dark:border-gray-700 shadow-lg p-5 flex rounded-sm items-center justify-between space-x-6 mb-4 w-full md:w-3/4 max-w-2xl dark:border-l-orange-600 border-l-orange-500 dark:bg-zinc-800 ">
+      <div className="details dark:text-white">
         <h2 className="text-2xl capitalize font-bold mb-2">{title}</h2>
         <p className="text-sm">{description}</p>
       </div>

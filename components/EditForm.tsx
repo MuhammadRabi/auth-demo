@@ -43,7 +43,7 @@ const EditForm = ({ id, title, description }: typeProps) => {
             value={newTitle}
             placeholder={title}
             onChange={(e) => setNewtitle(e.target.value)}
-            className="bg-slate-100 p-3"
+            className="bg-slate-100 dark:bg-slate-600 dark:text-white p-3"
           />
         </div>
         <div className="space-x-4">
@@ -52,7 +52,7 @@ const EditForm = ({ id, title, description }: typeProps) => {
             value={newDescription}
             placeholder={description}
             onChange={(e) => setNewdescription(e.target.value)}
-            className="bg-slate-100 p-3"
+            className="bg-slate-100 dark:bg-slate-600 dark:text-white p-3"
           />
         </div>
         <button
