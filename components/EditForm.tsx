@@ -35,7 +35,7 @@ const EditForm = ({ id, title, description }: typeProps) => {
   }
 
   return (
-    <section className="my-8 text-center w-full">
+    <section className="py-24 text-center w-full">
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
         <div className="space-x-4">
           <input

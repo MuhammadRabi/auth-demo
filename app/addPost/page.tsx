@@ -38,7 +38,7 @@ const AddPost = () => {
     }
   }
   return (
-    <section className="my-8 text-center w-full">
+    <section className="py-24 text-center w-full">
       <div className="font-bold capitalize mb-4 text-2xl">create post page</div>
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
         <div className="space-x-4">
@@ -47,7 +47,7 @@ const AddPost = () => {
             value={title}
             placeholder="title"
             onChange={(e) => setTitle(e.target.value)}
-            className="bg-slate-100 p-3"
+            className="bg-slate-100 p-3 dark:bg-slate-600 dark:text-white"
           />
         </div>
         <div className="space-x-4">
@@ -56,7 +56,7 @@ const AddPost = () => {
             value={description}
             placeholder="description"
             onChange={(e) => setDescription(e.target.value)}
-            className="bg-slate-100 p-3"
+            className="bg-slate-100 p-3 dark:bg-slate-600 dark:text-white"
           />
         </div>
         <button
