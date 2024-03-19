@@ -7,7 +7,7 @@ const ThemeChanger = () => {
   return (
     <div className="flex gap-4">
       {theme === "light" ? (
-        <button onClick={() => setTheme("dark")}>
+        <button aria-label="dark-btn" onClick={() => setTheme("dark")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -24,7 +24,7 @@ const ThemeChanger = () => {
           </svg>
         </button>
       ) : (
-        <button onClick={() => setTheme("light")}>
+        <button aria-label="light-btn" onClick={() => setTheme("light")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

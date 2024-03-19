@@ -39,24 +39,24 @@ const AddPost = () => {
   }
   return (
     <section className="py-24 text-center w-full">
-      <div className="font-bold capitalize mb-4 text-2xl">create post page</div>
+      <div className="font-bold capitalize mb-4 text-2xl">create post</div>
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
         <div className="space-x-4">
           <input
             type="text"
+            id="title"
             value={title}
             placeholder="title"
             onChange={(e) => setTitle(e.target.value)}
-            className="bg-slate-100 p-3 dark:bg-slate-600 dark:text-white"
+            className="input-controller"
           />
         </div>
         <div className="space-x-4">
-          <input
-            type="text"
+          <textarea
             value={description}
             placeholder="description"
             onChange={(e) => setDescription(e.target.value)}
-            className="bg-slate-100 p-3 dark:bg-slate-600 dark:text-white"
+            className="input-controller h-48"
           />
         </div>
         <button
