@@ -1,7 +1,5 @@
-export type postType = {
+export type PostProps = {
   _id: string
   title: string
   description: string
-  createdAt: string
-  updatedAt: string
 }

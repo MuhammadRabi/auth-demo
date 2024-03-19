@@ -28,7 +28,6 @@ const AddPost = () => {
 
       if (res.ok) {
         router.push("/")
-        router.refresh()
         toast.success("Post added successfully!")
       } else {
         throw new Error("Failde to add post!")

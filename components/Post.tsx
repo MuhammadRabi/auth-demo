@@ -1,19 +1,21 @@
 "use client"
 
-import { postType } from "@/types"
+import { PostProps } from "@/types"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { toast } from "react-hot-toast"
 
-const Post = ({ title, description, _id }: postType) => {
+const Post = ({ title, description, _id }: PostProps) => {
   const router = useRouter()
-  const removeHandler = async () => {
+  const removeHandler = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     const res = await fetch(`/api/posts?id=${_id}`, {
       method: "DELETE",
-      cache: "no-store",
     })
     if (res.ok) {
-      router.refresh()
+      // router.refresh()
+      window.location.reload()
       toast.error("Your post has been deleted!")
     }
   }

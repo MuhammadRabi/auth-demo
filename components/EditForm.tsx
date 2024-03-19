@@ -4,13 +4,13 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { toast } from "react-hot-toast"
 
-type typeProps = {
+type PostProps = {
   id: string
   title?: string
   description?: string
 }
 
-const EditForm = ({ id, title, description }: typeProps) => {
+const EditForm = ({ id, title, description }: PostProps) => {
   const [newTitle, setNewtitle] = useState(title)
   const [newDescription, setNewdescription] = useState(description)
   const router = useRouter()
@@ -27,7 +27,6 @@ const EditForm = ({ id, title, description }: typeProps) => {
         throw new Error("failed to update post!")
       }
       router.push("/")
-      router.refresh()
       toast.success(`${newTitle} was updated successfully!`)
     } catch (error) {
       console.log(error)
