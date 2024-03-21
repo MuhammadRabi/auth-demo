@@ -26,7 +26,7 @@ const EditForm = ({ id, title, description }: PostProps) => {
       if (!res.ok) {
         throw new Error("failed to update post!")
       }
-      router.push("/")
+      router.push("/posts")
       toast.success(`${newTitle} was updated successfully!`)
     } catch (error) {
       console.log(error)

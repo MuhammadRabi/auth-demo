@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
-import Post from "./Post"
-import { PostProps } from "@/types"
+import Post from "../Post"
+import { PostProps } from "@/lib/types"
 
 const PostList = () => {
   const [posts, setPosts] = useState<PostProps[]>([])
@@ -21,6 +21,7 @@ const PostList = () => {
       setLoading(false)
     } catch (error) {
       console.log(error)
+      setLoading(false)
     }
   }
   useEffect(() => {
@@ -34,15 +35,13 @@ const PostList = () => {
           <p className="text-xl dark:text-white">Loading... </p>
         </div>
       )}
-      {posts.length > 0 &&
+      {posts?.length > 0 ? (
         posts.map((post: PostProps) => {
           return <Post key={post?._id} {...post} />
-        })}
-      {posts.length == 0 && !loading && (
+        })
+      ) : (
         <div className="bg-slate-50 dark:bg-slate-600 p-4 my-6 rounded-md">
-          <p className="text-xl dark:text-white">
-            There is no posts to display right now!
-          </p>
+          <p className="text-xl dark:text-white"></p>
         </div>
       )}
     </>

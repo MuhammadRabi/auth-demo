@@ -11,7 +11,6 @@ const AddPost = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
     if (!title || !description) {
       toast.error("Title and description are required.")
       return
@@ -27,7 +26,7 @@ const AddPost = () => {
       })
 
       if (res.ok) {
-        router.push("/")
+        router.push("/posts")
         toast.success("Post added successfully!")
       } else {
         throw new Error("Failde to add post!")

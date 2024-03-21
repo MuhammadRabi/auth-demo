@@ -1,6 +1,6 @@
 "use client"
 import EditForm from "@/components/EditForm"
-import { postType } from "@/types"
+import { postType } from "@/lib/types"
 import { useEffect, useState } from "react"
 export default function EditPost({ params }: { params: { id: string } }) {
   const { id } = params
