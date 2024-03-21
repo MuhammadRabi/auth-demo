@@ -38,7 +38,10 @@ const AddPost = () => {
   return (
     <section className="py-24 text-center w-full">
       <div className="font-bold capitalize mb-4 text-2xl">create post</div>
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col space-y-4 max-w-sm mx-auto"
+      >
         <div className="space-x-4">
           <input
             type="text"
@@ -54,7 +57,7 @@ const AddPost = () => {
             value={description}
             placeholder="description"
             onChange={(e) => setDescription(e.target.value)}
-            className="input-controller h-48"
+            className="input-controller h-48 w-full"
           />
         </div>
         <button

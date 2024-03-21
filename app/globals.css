@@ -79,14 +79,14 @@
 @layer components {
   .input-controller {
     @apply bg-slate-100 p-3  dark:text-white block mx-auto md:w-1/3 w-3/4 rounded-sm
-  }
+  } 
 }
 
 /* forms */
 
 
 
-input[type="text"],input[type="password"],input[type="email"] {
+input[type="text"],input[type="password"],input[type="email"],textarea {
   @apply block w-full px-4 py-2 outline-none rounded-sm text-slate-800 font-semibold dark:text-white dark:bg-zinc-800
 }
 

@@ -35,7 +35,10 @@ const EditForm = ({ id, title, description }: PostProps) => {
 
   return (
     <section className="py-24 text-center w-full">
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col space-y-4 max-w-sm mx-auto"
+      >
         <div className="space-x-4">
           <input
             type="text"
@@ -50,7 +53,7 @@ const EditForm = ({ id, title, description }: PostProps) => {
             value={newDescription}
             placeholder={description}
             onChange={(e) => setNewdescription(e.target.value)}
-            className="input-controller h-48"
+            className="input-controller h-48 w-full"
           />
         </div>
         <button
