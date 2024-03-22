@@ -1,28 +1,29 @@
 "use client"
 
+import { formSchema } from "@/models/validations"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
-
-type Inputs = {
-  username: string
-  email: string
-  password: string
-  confirmPassword: string
-}
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
 
 const RegisterForm = () => {
+  zodResolver
+  type FormInputs = z.infer<typeof formSchema>
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>()
+  } = useForm<FormInputs>({
+    resolver: zodResolver(formSchema),
+  })
 
-  const onSubmit: SubmitHandler<Inputs> = (data: FieldValues) =>
+  const onSubmit: SubmitHandler<FormInputs> = (data: FieldValues) =>
     console.log(data)
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col max-w-sm gap-4 bg-gray-50 dark:bg-zinc-950 rounded-md p-6 px-8"
+      className="flex flex-col max-w-md gap-4 bg-gray-50 dark:bg-zinc-950 rounded-md p-6 px-8"
     >
       <p className="capitalize text-center text-xl font-bold">register</p>
       <input
@@ -30,17 +31,32 @@ const RegisterForm = () => {
         {...register("username")}
         placeholder="your username"
       />
+      {errors && (
+        <p className="text-red-500 text-xs px-2 font-semibold">
+          {errors.username?.message}
+        </p>
+      )}
       <input type="email" {...register("email")} placeholder="your email" />
+      {errors && (
+        <p className="text-red-500 text-xs  px-2 font-semibold">
+          {errors.email?.message}
+        </p>
+      )}
       <input
         type="password"
         {...register("password")}
         placeholder="your password"
       />
-      <input
+      {errors && (
+        <p className="text-red-500 text-xs  px-2 font-semibold">
+          {errors.password?.message}
+        </p>
+      )}
+      {/* <input
         type="password"
         {...register("confirmPassword")}
         placeholder="confirm your password"
-      />
+      /> */}
       <button type="submit">Register</button>
     </form>
   )
