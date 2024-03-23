@@ -93,6 +93,9 @@ input[type="text"],input[type="password"],input[type="email"],textarea {
 button[type="submit"]{
   @apply bg-slate-900 text-white py-1.5 rounded-md mt-3 hover:bg-slate-800 dark:hover:bg-slate-400 duration-300 dark:bg-slate-200 dark:text-slate-900
 }
+button[type="submit"]:disabled{
+  @apply  opacity-25  dark:opacity-25
+}
 
 input::-webkit-input-placeholder{
   @apply text-gray-400 text-sm capitalize font-light
@@ -112,4 +115,8 @@ input::-ms-input-placeholder{
 
 input::placeholder{
   @apply text-gray-400 text-sm capitalize font-light
+}
+
+label {
+  @apply text-sm font-semibold text-slate-700 dark:text-slate-400
 }
