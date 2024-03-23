@@ -69,7 +69,7 @@ const RegisterForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col max-w-md gap-3 bg-gray-50 dark:bg-zinc-950 rounded-md p-6 px-8"
+      className="flex flex-col max-w-md gap-3 bg-gray-200 dark:bg-zinc-950 rounded-md p-6 px-8"
     >
       <p className="capitalize text-center text-xl font-bold">register</p>
       {signupInputs.map((input) => (
