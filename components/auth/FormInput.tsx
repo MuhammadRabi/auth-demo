@@ -11,7 +11,7 @@ type props = {
 const FormInput = ({ type, placeholder, register, label, id }: props) => {
   return (
     <>
-      <label htmlFor={label}>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <input type={type} id={id} {...register} placeholder={placeholder} />
     </>
   )

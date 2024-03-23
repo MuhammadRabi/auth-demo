@@ -1,8 +1,7 @@
 "use client"
-import { loginSchema } from "@/models/validations"
+import { LoginInputs, loginSchema } from "@/models/validations"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
-import { z } from "zod"
+import { SubmitHandler, useForm } from "react-hook-form"
 import FormInput from "./FormInput"
 import InputError from "./InputError"
 
@@ -14,7 +13,6 @@ const SigninForm = () => {
   } = useForm<LoginInputs>({
     resolver: zodResolver(loginSchema),
   })
-  type LoginInputs = z.infer<typeof loginSchema>
 
   const loginInputs = [
     {
@@ -34,6 +32,7 @@ const SigninForm = () => {
       error: errors.password,
     },
   ]
+  loginInputs
 
   const onSubmit: SubmitHandler<LoginInputs> = ({ email, password }) => {
     const userData = {
@@ -51,7 +50,7 @@ const SigninForm = () => {
       {loginInputs.map((input) => (
         <>
           <FormInput key={input.id} {...input} />
-          <InputError key={input.label} error={input.error} />
+          <InputError key={input.placeholder} error={input.error} />
         </>
       ))}
 

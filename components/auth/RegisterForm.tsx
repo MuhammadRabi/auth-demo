@@ -1,26 +1,23 @@
 "use client"
 
-import { registerSchema } from "@/models/validations"
+import { RegisterInputs, registerSchema } from "@/models/validations"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Link from "next/link"
 import FormInput from "./FormInput"
 import InputError from "./InputError"
 
 const RegisterForm = () => {
-  type FormInputs = z.infer<typeof registerSchema>
-
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<FormInputs>({
+  } = useForm<RegisterInputs>({
     resolver: zodResolver(registerSchema),
   })
 
-  const onSubmit: SubmitHandler<FormInputs> = ({
+  const onSubmit: SubmitHandler<RegisterInputs> = ({
     username,
     email,
     password,
@@ -78,7 +75,7 @@ const RegisterForm = () => {
       {signupInputs.map((input) => (
         <>
           <FormInput key={input.id} {...input} />
-          <InputError key={input.label} error={input.error} />
+          <InputError key={input.placeholder} error={input.error} />
         </>
       ))}
 
