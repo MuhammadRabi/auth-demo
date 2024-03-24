@@ -17,28 +17,39 @@ const RegisterForm = () => {
     resolver: zodResolver(registerSchema),
   })
 
-  const onSubmit: SubmitHandler<RegisterInputs> = ({
-    username,
+  const onSubmit: SubmitHandler<RegisterInputs> = async ({
+    name,
     email,
     password,
   }) => {
     const userData = {
-      username,
+      name,
       password,
       email,
     }
+    const response = await fetch("/api/register", {
+      method: "POST",
+      body: JSON.stringify(userData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+
     // to db
+    if (!response.ok) {
+      console.log("There was an error!")
+    }
     console.log(userData)
     reset()
   }
   const signupInputs = [
     {
-      label: "Username",
-      id: "username",
+      label: "name",
+      id: "name",
       type: "text",
-      placeholder: "your username",
-      register: register("username"),
-      error: errors.username,
+      placeholder: "your name",
+      register: register("name"),
+      error: errors.name,
     },
     {
       label: "Email",
