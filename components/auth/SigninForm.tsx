@@ -6,6 +6,8 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import FormInput from "./FormInput"
 import InputError from "./InputError"
 import Link from "next/link"
+import { signIn } from "next-auth/react"
+import Image from "next/image"
 
 const SigninForm = () => {
   const {
@@ -36,11 +38,14 @@ const SigninForm = () => {
   ]
   loginInputs
 
-  const onSubmit: SubmitHandler<LoginInputs> = ({ email, password }) => {
+  const onSubmit: SubmitHandler<LoginInputs> = async ({ email, password }) => {
     const userData = {
       email,
       password,
     }
+    // email and password passed as options
+    await signIn("credentials", { email, password, callbackUrl: "/" })
+
     console.log(userData)
   }
   return (
@@ -55,14 +60,28 @@ const SigninForm = () => {
           <InputError key={input.placeholder} error={input.error} />
         </>
       ))}
-      <div className="text-sm">
-        <p>Don&apos;t have an account?</p>
+      <div className="text-xs">
+        <p>If you Don&apos;t have an account please</p>
         <Link href="/register" className="text-blue-600 text-center">
-          create account
+          sign up{" "}
         </Link>
       </div>
       <button type="submit" disabled={isSubmitting}>
         Log in
+      </button>
+      <span className="text-center">or</span>
+      <button
+        className="google-btn flex items-center justify-center gap-3"
+        type="button"
+        onClick={() => signIn("google", { callbackUrl: "/" })}
+      >
+        Sign in with Google
+        <Image
+          src="/google.png"
+          alt="google-login-btn"
+          width={20}
+          height={20}
+        />
       </button>
     </form>
   )

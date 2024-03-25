@@ -90,7 +90,7 @@ const RegisterForm = () => {
         </>
       ))}
 
-      <div className="text-sm">
+      <div className="text-xs">
         <p>Do you already have an account?</p>
         <Link href="/signin" className="text-blue-600 text-center">
           Log in

@@ -1,4 +1,5 @@
 import CreatePostBtn from "@/components/CreatePostBtn"
+import UserCard from "@/components/UserCard"
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
           where creativity meets computational prowess!
         </p>
         <CreatePostBtn />
+        <UserCard />
       </article>
     </section>
   )
