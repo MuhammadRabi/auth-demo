@@ -1,10 +1,10 @@
-import connectMongoDB from "@/lib/mongodb"
 import User from "@/models/user"
 import bcrypt from "bcrypt"
+import mongoose from "mongoose"
 
 export async function POST(request: Request) {
   const body = await request.json()
-  await connectMongoDB()
+  await mongoose.connect(process.env.MONGODB_URI as string)
   const plaintextPassword = body.password
   body.password = bcrypt.hashSync(plaintextPassword, 10)
 

@@ -2,7 +2,6 @@ import Link from "next/link"
 import ThemeChanger from "./ThemeChanger"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/constants/authOptions"
-import { signOut } from "next-auth/react"
 import SignOut from "./SignOut"
 
 const Navbar = async () => {

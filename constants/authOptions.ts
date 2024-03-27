@@ -1,11 +1,11 @@
 import CredentialsProvider from "next-auth/providers/credentials"
-import connectMongoDB from "@/lib/mongodb"
 import bcrypt from "bcrypt"
 import User from "@/models/user"
 import GoogleProvider from "next-auth/providers/google"
-//import type { NextAuthOptions } from "next-auth"
+import mongoose from "mongoose"
+import type { NextAuthOptions } from "next-auth"
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
@@ -15,8 +15,6 @@ export const authOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        // email: { label: "Email", type: "email", placeholder: "email" },
-        // password: { label: "Password", type: "password" },
         email: {},
         password: {},
       },
@@ -24,7 +22,8 @@ export const authOptions = {
         const email = credentials?.email
         const password = credentials?.password
         // Add logic here to look up the user from the credentials supplied
-        await connectMongoDB()
+        await mongoose.connect(process.env.MONGO_URI as string)
+
         const existingUser = await User.findOne({ email })
 
         const passwordOk =

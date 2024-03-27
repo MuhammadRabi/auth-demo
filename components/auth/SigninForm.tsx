@@ -8,8 +8,11 @@ import InputError from "./InputError"
 import Link from "next/link"
 import { signIn } from "next-auth/react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
+import toast from "react-hot-toast"
 
 const SigninForm = () => {
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -36,7 +39,6 @@ const SigninForm = () => {
       error: errors.password,
     },
   ]
-  loginInputs
 
   const onSubmit: SubmitHandler<LoginInputs> = async ({ email, password }) => {
     const userData = {
@@ -44,7 +46,18 @@ const SigninForm = () => {
       password,
     }
     // email and password passed as options
-    await signIn("credentials", { email, password, callbackUrl: "/" })
+    const login = await signIn("credentials", {
+      email,
+      password,
+      callbackUrl: "/",
+      redirect: false,
+    })
+
+    if (login?.ok && login?.url) {
+      router.push(login.url)
+    } else {
+      toast.error("Login failed!")
+    }
 
     console.log(userData)
   }
@@ -60,9 +73,9 @@ const SigninForm = () => {
           <InputError key={input.placeholder} error={input.error} />
         </>
       ))}
-      <div className="text-xs">
-        <p>If you Don&apos;t have an account please</p>
-        <Link href="/register" className="text-blue-600 text-center">
+      <div className="text-xs flex gap-1">
+        <p>If you don&apos;t have an account please</p>
+        <Link href="/register" className="text-blue-600 capitalize font-bold">
           sign up{" "}
         </Link>
       </div>

@@ -28,22 +28,28 @@ const PostList = () => {
     getAllPosts()
   }, [])
 
+  if (posts?.length === 0 && !loading) {
+    return (
+      <div className="bg-slate-50 dark:bg-slate-600 p-4 my-6 rounded-md">
+        <p className="text-xl dark:text-white">No posts yet, create one now</p>
+      </div>
+    )
+  }
+
+  if (loading) {
+    return (
+      <div className="bg-slate-50 dark:bg-slate-600 p-4 my-6 rounded-md">
+        <p className="text-xl dark:text-white">Loading... </p>
+      </div>
+    )
+  }
+
   return (
     <>
-      {loading && (
-        <div className="bg-slate-50 dark:bg-slate-600 p-4 my-6 rounded-md">
-          <p className="text-xl dark:text-white">Loading... </p>
-        </div>
-      )}
-      {posts?.length > 0 ? (
+      {posts &&
         posts.map((post: PostProps) => {
           return <Post key={post?._id} {...post} />
-        })
-      ) : (
-        <div className="bg-slate-50 dark:bg-slate-600 p-4 my-6 rounded-md">
-          <p className="text-xl dark:text-white"></p>
-        </div>
-      )}
+        })}
     </>
   )
 }

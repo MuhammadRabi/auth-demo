@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import Link from "next/link"
 import FormInput from "./FormInput"
 import InputError from "./InputError"
+import { useRouter } from "next/navigation"
 
 const RegisterForm = () => {
   const {
@@ -16,6 +17,8 @@ const RegisterForm = () => {
   } = useForm<RegisterInputs>({
     resolver: zodResolver(registerSchema),
   })
+
+  const router = useRouter()
 
   const onSubmit: SubmitHandler<RegisterInputs> = async ({
     name,
@@ -41,10 +44,11 @@ const RegisterForm = () => {
     }
     console.log(userData)
     reset()
+    router.push("/")
   }
   const signupInputs = [
     {
-      label: "name",
+      label: "Name",
       id: "name",
       type: "text",
       placeholder: "your name",
@@ -90,9 +94,9 @@ const RegisterForm = () => {
         </>
       ))}
 
-      <div className="text-xs">
+      <div className="text-xs flex gap-1">
         <p>Do you already have an account?</p>
-        <Link href="/signin" className="text-blue-600 text-center">
+        <Link href="/signin" className="text-blue-600 capitalize font-bold">
           Log in
         </Link>
       </div>

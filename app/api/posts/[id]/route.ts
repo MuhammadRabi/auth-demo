@@ -1,5 +1,5 @@
-import connectMongoDB from "@/lib/mongodb"
 import Post from "@/models/post"
+import mongoose from "mongoose"
 
 // edit post by id
 
@@ -9,7 +9,7 @@ export async function PUT(
 ) {
   const { id } = params
   const { newTitle: title, newDescription: description } = await request.json()
-  await connectMongoDB()
+  await mongoose.connect(process.env.MONGODB_URI as string)
   await Post.findByIdAndUpdate(id, { title, description })
   return Response.json({ message: "post updated!" }, { status: 200 })
 }
@@ -21,7 +21,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   const { id } = params
-  await connectMongoDB()
+  await mongoose.connect(process.env.MONGODB_URI as string)
   const post = await Post.findOne({ _id: id })
   return Response.json({ post }, { status: 200 })
 }

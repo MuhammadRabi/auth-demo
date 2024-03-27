@@ -1,3 +1,4 @@
+import ClientTest from "@/components/ClientTest"
 import CreatePostBtn from "@/components/CreatePostBtn"
 import UserCard from "@/components/UserCard"
 
@@ -18,7 +19,10 @@ export default function Home() {
           where creativity meets computational prowess!
         </p>
         <CreatePostBtn />
-        <UserCard />
+        <div className="flex items-center justify-center">
+          <ClientTest />
+          <UserCard />
+        </div>
       </article>
     </section>
   )
