@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
-import Post from "../Post"
+import Post from "./Post"
 import { PostProps } from "@/lib/types"
 
 const PostList = () => {

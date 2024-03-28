@@ -49,17 +49,14 @@ const SigninForm = () => {
     const login = await signIn("credentials", {
       email,
       password,
-      callbackUrl: "/",
       redirect: false,
     })
 
     if (login?.ok && login?.url) {
-      router.push(login.url)
+      router.push("/")
     } else {
       toast.error("Login failed!")
     }
-
-    console.log(userData)
   }
   return (
     <form

@@ -42,7 +42,6 @@ const RegisterForm = () => {
     if (!response.ok) {
       console.log("There was an error!")
     }
-    console.log(userData)
     reset()
     router.push("/")
   }

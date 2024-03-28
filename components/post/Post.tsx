@@ -3,7 +3,7 @@
 import { PostProps } from "@/lib/types"
 import Link from "next/link"
 import { toast } from "react-hot-toast"
-import RemoveBtn from "./post/RemoveBtn"
+import RemoveBtn from "./RemoveBtn"
 
 const Post = ({ title, description, _id }: PostProps) => {
   const removeHandler = async () => {

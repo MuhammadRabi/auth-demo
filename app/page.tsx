@@ -19,10 +19,10 @@ export default function Home() {
           where creativity meets computational prowess!
         </p>
         <CreatePostBtn />
-        <div className="flex items-center justify-center">
+        {/* <div className="flex items-center justify-center">
           <ClientTest />
           <UserCard />
-        </div>
+        </div> */}
       </article>
     </section>
   )
