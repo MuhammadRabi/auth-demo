@@ -32,7 +32,7 @@ export const authOptions: NextAuthOptions = {
         //  mongoose.connect(process.env.MONGO_URI as string)
         connectMongodb()
         const existingUser = await User.findOne({ email })
-        console.log(existingUser)
+        // console.log(existingUser)
 
         const passwordOk =
           existingUser &&
@@ -41,7 +41,6 @@ export const authOptions: NextAuthOptions = {
 
         if (passwordOk) {
           // Any object returned will be saved in `ser` property of the JWT
-          console.log(existingUser)
           return existingUser
         } else {
           // If you return null then an error will be displayed advising the user to check their details.
@@ -55,15 +54,17 @@ export const authOptions: NextAuthOptions = {
   // to push oAuth provider to db
   callbacks: {
     async session({ session }) {
+      const sessionUser = await User.findOne({ email: session?.user?.email })
+
+      if (session.user) {
+        session.user.id = sessionUser._id
+      }
+
       return session
     },
 
     async signIn({ profile, user, account }) {
       const { email } = user
-
-      // console.log("profile", profile)
-      // console.log("account", account?.provider)
-      // console.log("user", user)
 
       try {
         await connectMongodb()

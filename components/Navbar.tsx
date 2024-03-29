@@ -4,7 +4,7 @@ import ThemeChanger from "./ThemeChanger"
 import SignOut from "./SignOut"
 import { useSession } from "next-auth/react"
 import Login from "./Login"
-import UserCard from "./TestUserCard"
+import UserCard from "./UserCard"
 
 const Navbar = () => {
   const { data: session, status } = useSession()
