@@ -9,7 +9,7 @@ const userSchema = new Schema(
       required: [true, "Email is required"],
       unique: [true, "Email is already exists!"],
     },
-    image: { type: String },
+    provider: { type: String },
   },
   { timestamps: true }
 )

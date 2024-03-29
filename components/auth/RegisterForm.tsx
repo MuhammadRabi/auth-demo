@@ -81,10 +81,7 @@ const RegisterForm = () => {
   ]
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col max-w-md gap-3 bg-gray-200 dark:bg-zinc-950 rounded-md p-6 px-8"
-    >
+    <form onSubmit={handleSubmit(onSubmit)} className="form-box">
       <p className="capitalize text-center text-xl font-bold">register</p>
       {signupInputs.map((input) => (
         <>
@@ -93,10 +90,10 @@ const RegisterForm = () => {
         </>
       ))}
 
-      <div className="text-xs flex gap-1">
+      <div className="text-xs flex gap-1 my-2">
         <p>Do you already have an account?</p>
         <Link href="/signin" className="text-blue-600 capitalize font-bold">
-          Log in
+          Login
         </Link>
       </div>
       <button type="submit" disabled={isSubmitting}>

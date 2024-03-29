@@ -1,4 +1,5 @@
 import GoogleProvider from "next-auth/providers/google"
+import GithubProvider from "next-auth/providers/github"
 import { connectMongodb } from "@/lib/mongodb"
 import User from "@/models/user"
 import CredentialsProvider from "next-auth/providers/credentials"
@@ -12,6 +13,10 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     }),
 
     CredentialsProvider({
@@ -52,19 +57,24 @@ export const authOptions: NextAuthOptions = {
     async session({ session }) {
       return session
     },
-    async signIn({ profile, user }) {
+
+    async signIn({ profile, user, account }) {
       const { email } = user
 
-      console.log(profile)
+      // console.log("profile", profile)
+      // console.log("account", account?.provider)
+      // console.log("user", user)
+
       try {
         await connectMongodb()
         // check if user already exists
-        const userExists = await User.findOne({ email: user.email })
+        const userExists = await User.findOne({ email: email })
 
         if (!userExists) {
-          const user = await User.create({
+          const newUser = await User.create({
             email: profile?.email,
             name: profile?.name,
+            provider: account?.provider,
           })
         }
 

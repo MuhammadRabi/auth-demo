@@ -59,10 +59,7 @@ const SigninForm = () => {
     }
   }
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col max-w-sm gap-3 bg-gray-200 dark:bg-zinc-950 rounded-md p-6 px-8"
-    >
+    <form onSubmit={handleSubmit(onSubmit)} className="form-box">
       <p className="capitalize text-center text-xl font-bold">Log in</p>
       {loginInputs.map((input) => (
         <>
@@ -70,27 +67,42 @@ const SigninForm = () => {
           <InputError key={input.placeholder} error={input.error} />
         </>
       ))}
-      <div className="text-xs flex gap-1">
+      <div className="text-xs flex gap-1 my-2">
         <p>If you don&apos;t have an account please</p>
         <Link href="/register" className="text-blue-600 capitalize font-bold">
           sign up{" "}
         </Link>
       </div>
       <button type="submit" disabled={isSubmitting}>
-        Log in
+        Login
       </button>
       <span className="text-center">or</span>
       <button
-        className="google-btn flex items-center justify-center gap-3"
+        className="github-btn flex items-center justify-center gap-3"
         type="button"
         onClick={() => signIn("google", { callbackUrl: "/" })}
       >
-        Sign in with Google
+        Login with Google
         <Image
           src="/google.png"
           alt="google-login-btn"
           width={20}
           height={20}
+        />
+      </button>
+      <span className="text-center">or</span>
+      <button
+        className="google-btn flex items-center justify-center gap-3"
+        type="button"
+        onClick={() => signIn("github", { callbackUrl: "/" })}
+      >
+        Login with GitHub
+        <Image
+          src="/github.png"
+          alt="github-login-btn"
+          width={25}
+          height={25}
+          className="invert dark:invert-0"
         />
       </button>
     </form>
