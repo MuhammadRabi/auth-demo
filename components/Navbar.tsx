@@ -9,7 +9,7 @@ import UserCard from "./TestUserCard"
 const Navbar = () => {
   const { data: session, status } = useSession()
   return (
-    <nav className="bg-black dark:bg-slate-700 px-8 py-4 gap-1 flex justify-between md:justify-around items-center text-white">
+    <nav className="bg-black dark:bg-slate-700 px-2 md:px-8 py-4 gap-1 flex justify-between md:justify-around items-center text-white">
       <Link href="/">
         <div className="text-xl md:text-2xl font-bold">Rabi</div>
       </Link>
@@ -21,8 +21,8 @@ const Navbar = () => {
           <div className="font-bold py-1.5">posts</div>
         </Link>
         <ThemeChanger />
-        {status === "authenticated" ? <SignOut /> : <Login />}
         {session && <UserCard user={session?.user} />}
+        {status === "authenticated" ? <SignOut /> : <Login />}
       </div>
     </nav>
   )
