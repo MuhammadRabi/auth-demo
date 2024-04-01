@@ -4,13 +4,23 @@
 
 ## Overview
 
-The project is simple CRUD application made by NEXT js
+The project is simple CRUD application built by NEXT js
 
 ## Features
 
 - Functional CRUD APP
 - create, read, update and delete posts
+- Google, GitHub and Credentials Authentication
 - mongoDB integration
-- React Hook Form integration
-- Zod for schema validation
-- NextAuth for Authentication
+- schema validation
+
+## Technologies
+
+- mongoDB integration
+- Tailwind css
+- Typescript
+- React Hook Form
+- Zod
+- NextAuth
+- Shadcn UI
+- Heroicons

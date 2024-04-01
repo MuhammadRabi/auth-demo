@@ -1,6 +1,5 @@
 import { connectMongodb } from "@/lib/mongodb"
 import Post from "@/models/post"
-import mongoose from "mongoose"
 import { NextRequest } from "next/server"
 
 export async function POST(request: Request) {
