@@ -1,9 +1,8 @@
 "use client"
 import Link from "next/link"
 import ThemeChanger from "./ThemeChanger"
-import SignOut from "./SignOut"
 import { useSession } from "next-auth/react"
-import Login from "./Login"
+import Login from "./LoginBtn"
 import UserCard from "./UserCard"
 
 const Navbar = () => {
@@ -22,7 +21,7 @@ const Navbar = () => {
         </Link>
         <ThemeChanger />
         {session && <UserCard user={session?.user} />}
-        {status === "authenticated" ? <SignOut /> : <Login />}
+        {status !== "authenticated" && <Login />}
       </div>
     </nav>
   )
