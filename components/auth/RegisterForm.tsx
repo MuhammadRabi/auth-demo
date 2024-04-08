@@ -16,11 +16,12 @@ const RegisterForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<RegisterInputs>({
     resolver: zodResolver(registerSchema),
+    mode: "onBlur",
   })
 
   const router = useRouter()
 
-  const onSubmit: SubmitHandler<RegisterInputs> = async ({
+  const submitForm: SubmitHandler<RegisterInputs> = async ({
     name,
     email,
     password,
@@ -81,7 +82,7 @@ const RegisterForm = () => {
   ]
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="form-box">
+    <form onSubmit={handleSubmit(submitForm)} className="form-box">
       <p className="capitalize text-center text-xl font-bold">register</p>
       {signupInputs.map((input) => (
         <>
@@ -92,12 +93,12 @@ const RegisterForm = () => {
 
       <div className="text-xs flex gap-1 my-2">
         <p>Do you already have an account?</p>
-        <Link href="/signin" className="text-blue-600 capitalize font-bold">
+        <Link href="/login" className="text-blue-600 capitalize font-bold">
           Login
         </Link>
       </div>
       <button type="submit" disabled={isSubmitting}>
-        Register
+        {isSubmitting ? "Registering" : "Register"}
       </button>
     </form>
   )

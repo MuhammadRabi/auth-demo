@@ -89,7 +89,7 @@
 }
 
 input[type="text"],input[type="password"],input[type="email"],textarea {
-  @apply block w-full px-4 py-2 outline-none rounded-sm text-slate-800 font-semibold dark:text-white dark:bg-zinc-800
+  @apply block w-full px-4 py-2 rounded-sm text-slate-600 font-semibold dark:text-slate-400 dark:bg-zinc-800 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-400
 }
 
 button[type="submit"],.google-btn,.github-btn{
@@ -99,24 +99,29 @@ button[type="submit"]:disabled,.google-btn:disabled{
   @apply  opacity-25  dark:opacity-25
 }
 
+
 input::-webkit-input-placeholder{
-  @apply text-gray-400 text-sm capitalize font-light
+  @apply text-zinc-300 dark:text-zinc-700 text-sm capitalize font-semibold
 }
+
 
 input::-moz-placeholder{
-  @apply text-gray-400 text-sm capitalize font-light
+  @apply text-zinc-300 dark:text-zinc-700 text-sm capitalize font-semibold
 }
+
 
 input:-ms-input-placeholder{
-  @apply text-gray-400 text-sm capitalize font-light
+  @apply text-zinc-300 dark:text-zinc-700 text-sm capitalize font-semibold
 }
+
 
 input::-ms-input-placeholder{
-  @apply text-gray-400 text-sm capitalize font-light
+  @apply text-zinc-300 dark:text-zinc-700 text-sm capitalize font-semibold
 }
 
+
 input::placeholder{
-  @apply text-gray-400 text-sm capitalize font-light
+  @apply text-zinc-300 dark:text-zinc-700 text-sm capitalize font-semibold
 }
 
 label {

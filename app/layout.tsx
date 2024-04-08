@@ -10,8 +10,8 @@ import AuthProvider from "../context/AuthProvider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Posts",
-  description: "add posts",
+  title: "CRUD APP",
+  description: "A website for managing your posts and tasks!",
 }
 
 export default function RootLayout({

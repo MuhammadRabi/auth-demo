@@ -8,6 +8,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import LogoutBtn from "./LogoutBtn"
+import Link from "next/link"
+import { Settings, SquareUserRound } from "lucide-react"
 type User =
   | {
       name?: string | null | undefined
@@ -41,7 +43,7 @@ const UserCard = ({ user }: Props) => {
           <h3 className="font-bold text-[8px] md:text-sm">{user?.name}</h3>
         </article>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-52 text-center">
+      <DropdownMenuContent className="w-52 text-center dark:bg-slate-700 dark:border-slate-600 border-slate-100 border">
         <DropdownMenuLabel>
           {user?.name && user?.image && (
             <Image
@@ -49,15 +51,34 @@ const UserCard = ({ user }: Props) => {
               width={50}
               height={50}
               alt={user?.name}
-              className="my-2 rounded-full mx-auto"
+              className=" rounded-full mx-auto"
             />
           )}
         </DropdownMenuLabel>
-        <DropdownMenuSeparator />
         <DropdownMenuLabel>Hi, {user?.name}!</DropdownMenuLabel>
-        <DropdownMenuLabel className="text-xs font-normal">
-          {user?.email}
-        </DropdownMenuLabel>
+        <DropdownMenuSeparator className="dark:bg-slate-600" />
+
+        <DropdownMenuItem className="group">
+          <Link
+            href="/profile"
+            className="flex gap-3 capitalize items-center text-slate-600 dark:text-slate-300 font-medium group-hover:text-blue-500 duration-300"
+          >
+            {" "}
+            <SquareUserRound />
+            edit Profile
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="group">
+          <Link
+            href="/profile"
+            className="flex gap-3 capitalize items-center text-slate-600 dark:text-slate-300 font-medium group-hover:text-blue-500 duration-300"
+          >
+            {" "}
+            <Settings />
+            settings
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator className="dark:bg-slate-600" />
         <DropdownMenuLabel>
           <LogoutBtn />
         </DropdownMenuLabel>

@@ -19,6 +19,7 @@ const SigninForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<LoginInputs>({
     resolver: zodResolver(loginSchema),
+    mode: "onBlur",
   })
 
   const loginInputs = [
@@ -40,7 +41,10 @@ const SigninForm = () => {
     },
   ]
 
-  const onSubmit: SubmitHandler<LoginInputs> = async ({ email, password }) => {
+  const submitForm: SubmitHandler<LoginInputs> = async ({
+    email,
+    password,
+  }) => {
     const userData = {
       email,
       password,
@@ -59,7 +63,7 @@ const SigninForm = () => {
     }
   }
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="form-box">
+    <form onSubmit={handleSubmit(submitForm)} className="form-box">
       <p className="capitalize text-center text-xl font-bold">Log in</p>
       {loginInputs.map((input) => (
         <>
@@ -74,7 +78,7 @@ const SigninForm = () => {
         </Link>
       </div>
       <button type="submit" disabled={isSubmitting}>
-        Login
+        {isSubmitting ? "Logining" : "Login"}
       </button>
       <span className="text-center">or</span>
       <button

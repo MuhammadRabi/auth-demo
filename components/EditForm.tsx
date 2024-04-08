@@ -37,20 +37,30 @@ const EditForm = ({ id, title, description }: PostProps) => {
     <section className="py-24 text-center w-full">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col space-y-4 max-w-sm mx-auto"
+        className="flex flex-col space-y-6 max-w-md mx-auto"
       >
         <div className="space-x-4">
-          <input
-            type="text"
-            value={newTitle}
-            placeholder={title}
-            onChange={(e) => setNewtitle(e.target.value)}
-            className="input-controller"
-          />
+          <div className="flex flex-col gap-2">
+            <label htmlFor="title" className="text-left">
+              Post title:
+            </label>
+            <input
+              type="text"
+              id="title"
+              value={newTitle}
+              placeholder={title}
+              onChange={(e) => setNewtitle(e.target.value)}
+              className="input-controller"
+            />
+          </div>
         </div>
-        <div className="space-x-4">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="description" className="text-left">
+            Description:
+          </label>
           <textarea
             value={newDescription}
+            id="description"
             placeholder={description}
             onChange={(e) => setNewdescription(e.target.value)}
             className="input-controller h-48 w-full"
@@ -58,7 +68,7 @@ const EditForm = ({ id, title, description }: PostProps) => {
         </div>
         <button
           type="submit"
-          className="bg-emerald-500 w-fit p-2 capitalize mx-auto rounded-sm hover:bg-emerald-600 duration-300 font-bold text-white"
+          className="bg-emerald-500 w-fit p-2 capitalize mr-auto rounded-sm hover:bg-emerald-600 duration-300 font-bold text-white"
         >
           update post
         </button>

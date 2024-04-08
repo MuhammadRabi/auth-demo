@@ -3,7 +3,7 @@ import Link from "next/link"
 const Login = () => {
   return (
     <div className="auth flex items-center">
-      <Link href="/signin">
+      <Link href="/login">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -19,7 +19,7 @@ const Login = () => {
           />
         </svg>
       </Link>
-      <Link href="/signin">
+      <Link href="/login">
         <div className="hidden md:block text-sm md:text-base font-bold bg-white text-black px-3 rounded-md py-1.5 hover:bg-gray-300 duration-300">
           sign in
         </div>

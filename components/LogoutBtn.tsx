@@ -5,7 +5,7 @@ const LogoutBtn = () => {
   return (
     <button
       type="button"
-      className="capitalize mt-2 mx-auto text-sm flex justify-center items-center gap-2 font-bold bg-white text-black px-3 rounded-md py-1 hover:bg-gray-300 duration-300"
+      className="w-full capitalize mt-2 mx-auto text-sm flex justify-center items-center gap-2 font-bold dark:bg-slate-200 dark:hover:bg-slate-300 text-black px-3 rounded-md py-2 bg-gray-200 hover:bg-gray-300 duration-300"
       onClick={() => signOut()}
     >
       <span>Logout</span>
